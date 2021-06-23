@@ -31,6 +31,8 @@ public class LoginTest extends TestBase {
     public void validateUserCanCreateAccount(String userName, String email,String password){
 
         validateUrlWithExpected("https://www.amazon.com/");
+        createAccountPage.amazonLogoIsDisplayed();
+
         homePage.clickOnSignButton();
         ExtentTestManager.log("Sign in button clicked.",LOGGER);
         sleepFor(2);
@@ -40,17 +42,25 @@ public class LoginTest extends TestBase {
         sleepFor(2);
 
         createAccountPage.typeInNameField(userName);
+        ExtentTestManager.log("user name typed in successfully",LOGGER);
+
         createAccountPage.typeInMobileNumberOrEmailField(email);
+        ExtentTestManager.log("email address typed in successfully",LOGGER);
+
         createAccountPage.typeInPasswordFiled(password);
+        ExtentTestManager.log("password typed in successfully",LOGGER);
+
         createAccountPage.typeInReEnterField(password);
+        ExtentTestManager.log("password re-entered successfully",LOGGER);
 
         createAccountPage.validateTheFieldLabelsAreDisplayed();
         sleepFor(2);
 
         createAccountPage.clickOnVerifyEmailButton();
+        ExtentTestManager.log("verify email button clicked successfully",LOGGER);
         sleepFor(10);
 
-        createAccountPage.clickOnSolePuzzleButton();
+//        createAccountPage.clickOnSolePuzzleButton();
 
     }
 
