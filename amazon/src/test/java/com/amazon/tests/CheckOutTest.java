@@ -27,8 +27,8 @@ public class CheckOutTest extends TestBase {
         cartPage = PageFactory.initElements(driver,CartPage.class);
     }
 
-    @Test(dataProviderClass = DataProviderForTests.class,dataProvider = "getDataForCheckOutTest")
-    public void validateUserCanCheckOut(String email, String password, String booksName){
+    @Test(enabled = false,dataProviderClass = DataProviderForTests.class,dataProvider = "getDataForCheckOutTest")
+    public void validateUserBeignAbleToCheckOutFromAddToCartButton(String email, String password, String booksName){
         validateUrlWithExpected("https://www.amazon.com/");
         homePage.amazonLogoIsDisplayed();
 
@@ -71,8 +71,51 @@ public class CheckOutTest extends TestBase {
         ExtentTestManager.log("Clicked on 'Add to Cart' button",LOGGER);
         sleepFor(2);
 
-        cartPage.clickOnProceedToCheckOutButton();
+        cartPage.proceedToCheckOutButtonInAddToCart();
         ExtentTestManager.log("Clicked on 'Proceed to check out' button",LOGGER);
+
+        signInPage.typeInPasswordFiled(password);
+        ExtentTestManager.log("Password field typed in successfully",LOGGER);
+        sleepFor(2);
+
+        signInPage.clickOnSignInButton();
+        ExtentTestManager.log("Sign in button clicked",LOGGER);
+        sleepFor(2);
+
+    }
+
+    @Test(enabled = true,dataProviderClass = DataProviderForTests.class,dataProvider = "getDataForCheckOutTest")
+    public void validateUserBeignAbleToCheckOutFromShoppingCartIcon(String email, String password, String booksName){
+        validateUrlWithExpected("https://www.amazon.com/");
+        homePage.amazonLogoIsDisplayed();
+
+        homePage.clickOnSignButton();
+        ExtentTestManager.log("Sign in button clicked.",LOGGER);
+        sleepFor(2);
+
+        signInPage.typeInMobileNumberOrEmailField(email);
+        ExtentTestManager.log("Email field typed in successfully",LOGGER);
+        sleepFor(2);
+
+        signInPage.clickOnContinueButton();
+        ExtentTestManager.log("Continue button clicked",LOGGER);
+        sleepFor(2);
+
+        signInPage.typeInPasswordFiled(password);
+        ExtentTestManager.log("Password field typed in successfully",LOGGER);
+        sleepFor(2);
+
+        signInPage.clickOnSignInButton();
+        ExtentTestManager.log("Sign in button clicked",LOGGER);
+        sleepFor(5);
+
+        homePage.clickOnShoppingCartButton();
+        ExtentTestManager.log("Clicked on shopping cart option",LOGGER);
+        sleepFor(2);
+
+        cartPage.proceedToCheckoutButtonInShoppingCart();
+        ExtentTestManager.log("Clicked on 'Proceed to check out' button",LOGGER);
+        sleepFor(2);
 
         signInPage.typeInPasswordFiled(password);
         ExtentTestManager.log("Password field typed in successfully",LOGGER);
