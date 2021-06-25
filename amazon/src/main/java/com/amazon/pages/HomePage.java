@@ -59,6 +59,9 @@ public class HomePage extends TestBase {
     @FindBy(linkText = "Sign Out")
     private WebElement signOutOption;
 
+    @FindBy(id = "nav-cart")
+    private WebElement shoppingCartButton;
+
 
 
     public void clickOnSignButton(){
@@ -125,6 +128,10 @@ public class HomePage extends TestBase {
         sleepFor(2);
         rentOrButOption.click();
 
+    }
+
+    public void clickOnShoppingCartButton(){
+        shoppingCartButton.click();
     }
 
     public void signOutFromAccount(){
