@@ -9,15 +9,20 @@ public class CartPage {
     private WebElement addToCartButton;
 
     @FindBy(id = "hlb-ptc-btn-native")
-    private WebElement proceedToCheckOutButton;
+    private WebElement proceedToCheckOutButtonInAddToCart;
 
-
+    @FindBy(id = "sc-buy-box-ptc-button")
+    private WebElement proceedToCheckoutButtonInShoppingCart;
 
     public void clickOnAddToCartButton(){
         addToCartButton.click();
     }
 
-    public void clickOnProceedToCheckOutButton(){
-        proceedToCheckOutButton.click();
+    public void proceedToCheckOutButtonInAddToCart(){
+        proceedToCheckOutButtonInAddToCart.click();
+    }
+
+    public void proceedToCheckoutButtonInShoppingCart(){
+        proceedToCheckoutButtonInShoppingCart.click();
     }
 }
