@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class VerifyAutosuggestionTest extends TestBase {
 
-    private static final Logger LOGGER = Logger.getLogger(SearchAndVerifyItemTest.class);
+    private static final Logger LOGGER = Logger.getLogger(VerifyAutosuggestionTest.class);
 
     private HomePage homePage;
     private CreateAccountPage createAccountPage;
@@ -27,7 +27,7 @@ public class VerifyAutosuggestionTest extends TestBase {
     public void validateUserCanSeeAutoSuggestionWhenSearchingItems(String brandName){
 
         validateUrlWithExpected("https://www.amazon.com/");
-        createAccountPage.amazonLogoIsDisplayed();
+        homePage.amazonLogoIsDisplayed();
 
         homePage.typeOnSearchBar(brandName);
         ExtentTestManager.log(brandName + " typed on the search bar.",LOGGER);

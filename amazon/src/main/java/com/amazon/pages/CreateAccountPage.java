@@ -4,6 +4,7 @@ import com.amazon.base.report.ExtentTestManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 public class CreateAccountPage {
@@ -22,9 +23,6 @@ public class CreateAccountPage {
     @FindBy(id = "ap_password_check")
     private WebElement reEnterPasswordField;
 
-    @FindBy(id = "continue")
-    private WebElement verifyEmailButton;
-
     @FindBy(xpath = "//label[@for='ap_customer_name']")
     private WebElement nameLabel;
 
@@ -36,6 +34,19 @@ public class CreateAccountPage {
 
     @FindBy(xpath = "//label[@for='ap_password_check']")
     private WebElement reEnterPasswordLabel;
+
+    @FindBy(id = "continue")
+    private WebElement verifyEmailButton;
+
+    @FindBy(linkText = "Solve Puzzle")
+    private WebElement solvePuzzleButton;
+
+//    @FindBy(xpath = "//input[@class='a-input-text a-span12 cvf-widget-input cvf-widget-input-code']")
+//    private WebElement otpField;
+//
+//    @FindBy(id = "cvf-submit-otp-button-announce")
+//    private WebElement otpVerify;
+
 
     public void typeInNameField(String data){
         nameField.sendKeys(data);
@@ -75,6 +86,13 @@ public class CreateAccountPage {
     public void clickOnVerifyEmailButton(){
         verifyEmailButton.click();
     }
+
+    public void clickOnSolePuzzleButton(){
+        solvePuzzleButton.click();
+    }
+
+
+
 
 
 }

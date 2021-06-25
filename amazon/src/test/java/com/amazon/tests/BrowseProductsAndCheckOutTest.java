@@ -2,6 +2,8 @@ package com.amazon.tests;
 
 import com.amazon.base.TestBase;
 import com.amazon.base.report.ExtentTestManager;
+import com.amazon.data.DataProviderForTests;
+import com.amazon.pages.CreateAccountPage;
 import com.amazon.pages.HomePage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
@@ -10,19 +12,35 @@ import org.testng.annotations.Test;
 
 public class BrowseProductsAndCheckOutTest extends TestBase {
 
-    private static final Logger LOGGER = Logger.getLogger(SearchTest.class);
+    private static final Logger LOGGER = Logger.getLogger(BrowseProductsAndCheckOutTest.class);
 
     private HomePage homePage;
+    private CreateAccountPage createAccountPage;
 
     @BeforeMethod
     private void setPOM(){
         homePage = PageFactory.initElements(driver, HomePage.class);
+        createAccountPage = PageFactory.initElements(driver, CreateAccountPage.class);
     }
 
-    @Test(enabled = true)
-    public void validateUserBeingAbleToBrowseAnItem() {
+    @Test(enabled = false, dataProviderClass = DataProviderForTests.class, dataProvider = "getDataForBrowseProductsTest")
+    public void validateUserBeingAbleToBrowseAnItemByMouseHover(String linkText) {
 
-        homePage.clickOnProductsCategories("Today's Deals");
-        ExtentTestManager.log("Clicked on the  button.",LOGGER);
+        homePage.clickOnProductsCategories(linkText);
+        ExtentTestManager.log("Clicked on the button.",LOGGER);
+
+    }
+
+    @Test(enabled = false,dataProviderClass = DataProviderForTests.class, dataProvider = "getDataForSearchDropDownTest")
+    public void validateUserCanSelectCategoryFromDropDownList(String data){
+        homePage.productCategoryDropDown(data);
+        ExtentTestManager.log("Category drop down work",LOGGER);
+    }
+
+    @Test
+    public void validateUserCanSelectProductFromHamburgerMenu(){
+        homePage.selectProductsFromHamburgerMenu1();
+        ExtentTestManager.log("Select product from hamburger menu work successfully",LOGGER);
+
     }
 }

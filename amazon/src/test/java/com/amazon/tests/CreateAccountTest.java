@@ -9,11 +9,10 @@ import com.amazon.pages.SignInPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginTest extends TestBase {
-    private static final Logger LOGGER = Logger.getLogger(LoginTest.class);
+public class CreateAccountTest extends TestBase {
+    private static final Logger LOGGER = Logger.getLogger(CreateAccountTest.class);
 
     private HomePage homePage;
     private SignInPage signInPage;
@@ -27,11 +26,11 @@ public class LoginTest extends TestBase {
 
     }
 
-    @Test(dataProviderClass = DataProviderForTests.class,dataProvider = "getDataForLoginTest")
+    @Test(dataProviderClass = DataProviderForTests.class,dataProvider = "getDataForCreateAccountTest")
     public void validateUserCanCreateAccount(String userName, String email,String password){
 
         validateUrlWithExpected("https://www.amazon.com/");
-        createAccountPage.amazonLogoIsDisplayed();
+        amazonLogoIsDisplayed();
 
         homePage.clickOnSignButton();
         ExtentTestManager.log("Sign in button clicked.",LOGGER);
@@ -54,6 +53,7 @@ public class LoginTest extends TestBase {
         ExtentTestManager.log("password re-entered successfully",LOGGER);
 
         createAccountPage.validateTheFieldLabelsAreDisplayed();
+        ExtentTestManager.log("Field's label are displayed",LOGGER);
         sleepFor(2);
 
         createAccountPage.clickOnVerifyEmailButton();

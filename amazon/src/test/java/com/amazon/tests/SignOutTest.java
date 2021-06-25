@@ -48,7 +48,7 @@ public class SignOutTest extends TestBase {
 
         signInPage.clickOnSignInButton();
         ExtentTestManager.log("Sign in button clicked",LOGGER);
-        sleepFor(2);
+        sleepFor(5);
 
         homePage.signOutFromAccount();
         ExtentTestManager.log("Sign out",LOGGER);

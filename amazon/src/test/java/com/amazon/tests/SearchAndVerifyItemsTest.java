@@ -14,9 +14,9 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SearchAndVerifyItemTest extends TestBase {
+public class SearchAndVerifyItemsTest extends TestBase {
 
-    private static final Logger LOGGER = Logger.getLogger(SearchAndVerifyItemTest.class);
+    private static final Logger LOGGER = Logger.getLogger(SearchAndVerifyItemsTest.class);
 
     private HomePage homePage;
     private CreateAccountPage createAccountPage;
@@ -42,19 +42,19 @@ public class SearchAndVerifyItemTest extends TestBase {
     }
 
     @Test(enabled = true,dataProviderClass = DataProviderForTests.class, dataProvider = "getDataForSearchtest")
-    public void validateUserBeingAbleToSearchForAnItem2(String brandName){
+    public void validateUserBeingAbleToSearchForAnItem2(String booksName){
 
         validateUrlWithExpected("https://www.amazon.com/");
         homePage.amazonLogoIsDisplayed();
 
-        homePage.typeOnSearchBar(brandName);
-        ExtentTestManager.log(brandName + " typed on the search bar.",LOGGER);
+        homePage.typeOnSearchBar(booksName);
+        ExtentTestManager.log(booksName + " typed on the search bar.",LOGGER);
         sleepFor(2);
 
         homePage.clickOnSearchButton();
         ExtentTestManager.log("Clicked on the search button.",LOGGER);
 
-        homePage.verifySearchResult(brandName);
+        homePage.verifySearchResult(booksName);
         ExtentTestManager.log("Search result displayed",LOGGER);
         sleepFor(2);
 
