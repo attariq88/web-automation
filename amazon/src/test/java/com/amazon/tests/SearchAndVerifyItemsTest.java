@@ -28,7 +28,7 @@ public class SearchAndVerifyItemsTest extends TestBase {
     }
 
     @Test(enabled = false)
-    public void validateUserBeingAbleToSearchForAnItem1(){
+    public void validateUserBeingAbleToSearchForAnItem(){
 
         validateUrlWithExpected("https://www.amazon.com/");
         homePage.amazonLogoIsDisplayed();
@@ -42,7 +42,7 @@ public class SearchAndVerifyItemsTest extends TestBase {
     }
 
     @Test(enabled = true,dataProviderClass = DataProviderForTests.class, dataProvider = "getDataForSearchtest")
-    public void validateUserBeingAbleToSearchForAnItem2(String booksName){
+    public void validateUserBeingAbleToSearchForAnItemFromDataProvider(String booksName){
 
         validateUrlWithExpected("https://www.amazon.com/");
         homePage.amazonLogoIsDisplayed();
