@@ -4,33 +4,34 @@ import com.amazon.base.ConnectDB;
 import com.amazon.base.TestBase;
 import com.amazon.base.report.ExtentTestManager;
 import com.amazon.data.DataProviderForTests;
+import com.amazon.pages.CreateAccountPage;
 import com.amazon.pages.HomePage;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SearchTest extends TestBase {
+public class SearchAndVerifyItemTest extends TestBase {
 
-    private static final Logger LOGGER = Logger.getLogger(SearchTest.class);
+    private static final Logger LOGGER = Logger.getLogger(SearchAndVerifyItemTest.class);
 
     private HomePage homePage;
+    private CreateAccountPage createAccountPage;
 
     @BeforeMethod
     private void setPOM(){
         homePage = PageFactory.initElements(driver, HomePage.class);
+        createAccountPage = PageFactory.initElements(driver,CreateAccountPage.class);
     }
 
     @Test(enabled = false)
     public void validateUserBeingAbleToSearchForAnItem1(){
+
+        validateUrlWithExpected("https://www.amazon.com/");
+        homePage.amazonLogoIsDisplayed();
 
         homePage.typeOnSearchBar();
         ExtentTestManager.log("Nike typed on the search bar.",LOGGER);
@@ -43,6 +44,9 @@ public class SearchTest extends TestBase {
     @Test(enabled = true,dataProviderClass = DataProviderForTests.class, dataProvider = "getDataForSearchtest")
     public void validateUserBeingAbleToSearchForAnItem2(String brandName){
 
+        validateUrlWithExpected("https://www.amazon.com/");
+        homePage.amazonLogoIsDisplayed();
+
         homePage.typeOnSearchBar(brandName);
         ExtentTestManager.log(brandName + " typed on the search bar.",LOGGER);
         sleepFor(2);
@@ -52,21 +56,16 @@ public class SearchTest extends TestBase {
 
         homePage.verifySearchResult(brandName);
         ExtentTestManager.log("Search result displayed",LOGGER);
-
-        homePage.verifyAutosuggestion();
-        ExtentTestManager.log("Autosuggestion displayed",LOGGER);
-
-//        homePage.selectProductCategoryAfterSearch();
-//        ExtentTestManager.log("Item's category selected",LOGGER);
-
-        homePage.navigateProductFromSearchResult();
-        ExtentTestManager.log("Item selected from search result list",LOGGER);
+        sleepFor(2);
 
 
     }
 
     @Test(enabled = false)
     public void validateUserBeingAbleToSearchForAnItemFromDatabase() throws SQLException {
+
+        validateUrlWithExpected("https://www.amazon.com/");
+        homePage.amazonLogoIsDisplayed();
 
         String query = "select * from testdata";
 
@@ -78,8 +77,9 @@ public class SearchTest extends TestBase {
         homePage.clickOnSearchButton();
         ExtentTestManager.log("Clicked on the search button.",LOGGER);
 
-        homePage.navigateProductFromSearchResult();
-        ExtentTestManager.log("Item selected from search result list",LOGGER);
+        homePage.verifyAutosuggestion();
+        ExtentTestManager.log("Autosuggestion displayed",LOGGER);
+        sleepFor(5);
 
     }
 
