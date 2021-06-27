@@ -15,7 +15,7 @@ public class SignUpPage {
     @FindBy(xpath = "//input[@aria-label='Mobile number or email']")
     private WebElement numberOrEmailField;
 
-    @FindBy(xpath = "//div[@class='inputtext _58mg _5dba _2ph-']")
+    @FindBy(xpath = "//input[@name='reg_email_confirmation__']")
     private WebElement reEnterEmailField;
 
     @FindBy(id = "password_step_input")
