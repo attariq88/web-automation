@@ -14,6 +14,7 @@ public class CartPage {
     @FindBy(id = "sc-buy-box-ptc-button")
     private WebElement proceedToCheckoutButtonInShoppingCart;
 
+
     public void clickOnAddToCartButton(){
         addToCartButton.click();
     }

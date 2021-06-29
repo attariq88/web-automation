@@ -28,7 +28,7 @@ public class SignOutTest extends TestBase {
     public void validateUserBeingAbleToSignOutFromTheirAccount(String email, String password){
 
         validateUrlWithExpected("https://www.amazon.com/");
-        amazonLogoIsDisplayed();
+        homePage.amazonLogoIsDisplayed();
 
         homePage.clickOnSignButton();
         ExtentTestManager.log("Sign in button clicked.",LOGGER);
@@ -55,4 +55,6 @@ public class SignOutTest extends TestBase {
 
 
     }
+
+
 }

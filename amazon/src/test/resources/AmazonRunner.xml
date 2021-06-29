@@ -12,7 +12,7 @@
 
     <test name="Automation tests">
         <classes>
-            <class name="com.amazon.tests.CheckOutTest"/>
+            <class name="com.amazon.tests.CreateAccountTest"/>
         </classes>
 
         <!--<groups>

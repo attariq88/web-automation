@@ -9,9 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-public class HomePage extends TestBase {
+public class HomePage extends TestBase{
 
-    private static Logger LOGGER = Logger.getLogger(HomePage.class);
 
     @FindBy(id = "nav-logo-sprites")
     private WebElement amazonLogo;
@@ -63,6 +62,10 @@ public class HomePage extends TestBase {
     private WebElement shoppingCartButton;
 
 
+    public void amazonLogoIsDisplayed(){
+
+        Assert.assertTrue(amazonLogo.isDisplayed(),"Logo is not displayed");
+    }
 
     public void clickOnSignButton(){
         signInButton.click();
@@ -78,15 +81,6 @@ public class HomePage extends TestBase {
 
     public void clickOnSearchButton(){
         searchButton.click();
-    }
-
-    public void clickOnProductsCategories(String linkText){
-
-        WebElement category = driver.findElement(By.linkText(linkText));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(category).build().perform();
-        category.click();
-
     }
 
     public void productCategoryDropDown(String data){
@@ -140,6 +134,8 @@ public class HomePage extends TestBase {
         sleepFor(2);
         signOutOption.click();
     }
+
+
 
 
 

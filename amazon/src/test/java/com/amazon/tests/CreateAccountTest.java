@@ -34,7 +34,7 @@ public class CreateAccountTest extends TestBase {
     public void validateUserCanCreateAccountFromDataProvider(String userName, String email,String password){
 
         validateUrlWithExpected("https://www.amazon.com/");
-        amazonLogoIsDisplayed();
+        homePage.amazonLogoIsDisplayed();
 
         homePage.clickOnSignButton();
         ExtentTestManager.log("Sign in button clicked.",LOGGER);

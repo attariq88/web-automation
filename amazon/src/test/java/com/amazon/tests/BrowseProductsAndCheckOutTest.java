@@ -6,6 +6,9 @@ import com.amazon.data.DataProviderForTests;
 import com.amazon.pages.CreateAccountPage;
 import com.amazon.pages.HomePage;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -26,7 +29,10 @@ public class BrowseProductsAndCheckOutTest extends TestBase {
     @Test(enabled = false, dataProviderClass = DataProviderForTests.class, dataProvider = "getDataForBrowseProductsTest")
     public void validateUserBeingAbleToBrowseAnItemByMouseHover(String linkText) {
 
-        homePage.clickOnProductsCategories(linkText);
+        WebElement category = driver.findElement(By.linkText(linkText));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(category).build().perform();
+        category.click();
         ExtentTestManager.log("Clicked on the button.",LOGGER);
 
     }

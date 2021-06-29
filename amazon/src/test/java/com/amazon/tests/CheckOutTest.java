@@ -29,8 +29,10 @@ public class CheckOutTest extends TestBase {
 
     @Test(enabled = false,dataProviderClass = DataProviderForTests.class,dataProvider = "getDataForCheckOutTest")
     public void validateUserBeignAbleToCheckOutFromAddToCartButton(String email, String password, String booksName){
+
         validateUrlWithExpected("https://www.amazon.com/");
         homePage.amazonLogoIsDisplayed();
+        ExtentTestManager.log("Logo display is validated",LOGGER);
 
         homePage.clickOnSignButton();
         ExtentTestManager.log("Sign in button clicked.",LOGGER);
