@@ -7,7 +7,9 @@ public class DataProviderForTests {
     @DataProvider(name = "getDataForRegistrationTest")
     public Object[][] getDataForRegistrationTest(){
         return new Object[][]{
-                {"Peoplentech","Tariq"}
+                {"Peoplentech","Tariq","October","17","1981","12190"}
         };
     }
+
+
 }
